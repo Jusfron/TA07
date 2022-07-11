@@ -26,7 +26,7 @@ public class TA07_04 {
 	private static void menuOpciones () {
 		String opcion = " ";
 		
-		while(!opcion.equals("4")) {			
+		while(!opcion.equals("7")) {			
 			opcion = JOptionPane.showInputDialog("Opciones\n1 : Añadir producto\n2 : Mostrar artículo\n3 : Mostrar todos los artículos\n4 : Añadir venta\n"
 					+ "5 : Mostrar venta\n6 : Mostrar ventas\n7 : Salir del programa");
 			switch (opcion) {
@@ -128,11 +128,11 @@ public class TA07_04 {
 		double cambio, precioIva;
 		
 		venta = Integer.parseInt(JOptionPane.showInputDialog("Introduce el numero de venta"));
-		cambio = ventasCantidadPagada.get(venta);
-		precioIva = ventasPrecioBruto.get(venta) + ventasPrecioBruto.get(venta)*(double)ventasIva.get(venta)/100;
-		numArticulos = ventasArticulos.get(venta).size();
 		
 		if(ventasArticulos.containsKey(venta)) {
+			precioIva = ventasPrecioBruto.get(venta) + ventasPrecioBruto.get(venta)*(double)ventasIva.get(venta)/100;
+			cambio = ventasCantidadPagada.get(venta)-precioIva;
+			numArticulos = ventasArticulos.get(venta).size();
 			JOptionPane.showMessageDialog(null, "Venta num "+venta+"\nIVA : "+ventasIva.get(venta)+"\nPrecio total bruto : "+ventasPrecioBruto.get(venta)
 			+"\nPrecio total mas IVA : "+precioIva+"\nNumero artículos comprados : "+numArticulos+"\nCantidad pagada : "+ventasCantidadPagada.get(venta)
 			+"\nCambio a devolver : "+cambio);
@@ -145,8 +145,8 @@ public class TA07_04 {
 		int numArticulos;
 		double cambio, precioIva;
 		
-		cambio = ventasCantidadPagada.get(numVenta);
 		precioIva = ventasPrecioBruto.get(numVenta) + ventasPrecioBruto.get(numVenta)*(double)ventasIva.get(numVenta)/100;
+		cambio = ventasCantidadPagada.get(numVenta)-precioIva;
 		numArticulos = ventasArticulos.get(numVenta).size();
 		
 		JOptionPane.showMessageDialog(null, "Venta num "+numVenta+"\nIVA : "+ventasIva.get(numVenta)+"\nPrecio total bruto : "+ventasPrecioBruto.get(numVenta)
